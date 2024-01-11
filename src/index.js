@@ -2,6 +2,7 @@
 import dotenv from "dotenv"
 import connectDB from './db/index.js';
 import { app } from "./app.js";
+import { uploadOnCloud } from "./utlis/Cloudinary.js";
 
 
 dotenv.config({
@@ -24,3 +25,4 @@ connectDB()
     console.log("Mongodb connection faied: ", error);
 });
 
+uploadOnCloud()

@@ -8,6 +8,7 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true
 }));
+// app.use(cors())
 
 //app.use => to set configuration and middlewares
 app.use(express.json({
