@@ -33,4 +33,11 @@ app.use(express.static("public"))
 // meaning to set and access cookies of user
 app.use(cookieParser());
 
+
+//Routes import
+import userRouter from './routes/user.routes.js';
+
+//routes declaration
+app.use("/api/v1/users", userRouter);
+
 export {app}
