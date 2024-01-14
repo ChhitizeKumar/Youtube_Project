@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
-    userame: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -22,6 +22,7 @@ const userSchema = new Schema(
     },
 
     fullName: {
+      type: String,
       required: true,
       lowercase: true,
       trim: true,
@@ -65,7 +66,7 @@ userSchema.pre("save", async function (next) {
 })
 
 //methods also has access to "this"
-userSchema.methods.isPasswordCorrect() = async function (password) {
+userSchema.methods.isPasswordCorrect = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 
