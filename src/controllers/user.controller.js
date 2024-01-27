@@ -3,6 +3,7 @@ import {ApiError} from "../utlis/ApiError.js"
 import { User } from "../modles/user.models.js";
 import { uploadOnCloud } from "../utlis/Cloudinary.js";
 import { ApiResponse } from "../utlis/ApiResponse.js";
+import mongoose from "mongoose";
 
 const generateAccessAndRefereshTokens = async (userId) => {
   try {
@@ -494,6 +495,10 @@ const getWatchHistory = asyncHandler(async (req, res) => {
             }
         }
     ])
+
+    if (!user?.length) {
+      throw new ApiError(404, "User not found");
+    }
 
     return res
     .status(200)
